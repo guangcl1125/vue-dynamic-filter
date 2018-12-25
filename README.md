@@ -1,4 +1,4 @@
-# test-project
+# test-dimanic-filter-project
 
 > A Vue.js project
 
