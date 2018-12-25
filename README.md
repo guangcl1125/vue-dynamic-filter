@@ -1,4 +1,4 @@
-# test-dimanic-filter-project
+# test-dynamic-filter-project
 
 > A Vue.js project
 
