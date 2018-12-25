@@ -1,20 +1,16 @@
 <template>
   <div id="app">
-    <input type="text" v-model="filter" placeholder="搜尋">
+    <input type="text" v-model="filter" placeholder="搜尋" />
     <ul>
-      <template v-if="filter && filterArry.length">  
+      <template v-if="filter && filterArry.length">
         <li v-for="item in filterArry">
           <span v-html="hightLight(item)"></span>
           <span class="population">{{ population(item.population) }}</span>
         </li>
-      </template>  
+      </template>
       <template v-else>
-        <li>  
-          <span>filter city</span>
-        </li>
-        <li>  
-          <span>or state</span>
-        </li>
+        <li><span>filter city</span></li>
+        <li><span>or state</span></li>
       </template>
     </ul>
   </div>
@@ -23,7 +19,7 @@
 <script>
 import HelloWorld from "./components/HelloWorld";
 import axios from "axios";
-import _ from "lodash";
+// import _ from "lodash";
 
 export default {
   name: "App",
@@ -54,12 +50,6 @@ export default {
       axios.get(url).then(res => {
         this.cityMap = res.data;
       });
-
-      // fetch(url).then(res => {
-      //   res.json().then(obj => {
-      //     this.cityMap = obj;
-      //   });
-      // });
     },
     population(num) {
       return Number(num).toLocaleString();
@@ -76,17 +66,10 @@ export default {
       );
 
       return `${cityName}, ${stateName}`;
-    },
-    debounceTest: _.debounce(function(w) {
-      console.log(w);
-    }, 500)
+    }
   },
   mounted() {
     this.API_city();
-
-    window.onresize = event => {
-      this.debounceTest(event.target.innerWidth);
-    };
   }
 };
 </script>
