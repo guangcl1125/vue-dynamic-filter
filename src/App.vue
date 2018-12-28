@@ -1,24 +1,28 @@
 <template>
   <div id="app">
-    <input type="text" v-model="filter" placeholder="搜尋" />
+    <input type="text" v-model="filter" placeholder="搜尋">
     <ul>
       <template v-if="filter && filterArry.length">
-        <li v-for="item in filterArry">
+        <li v-for="(item, index) in filterArry" :key="index">
           <span v-html="hightLight(item)"></span>
           <span class="population">{{ population(item.population) }}</span>
         </li>
       </template>
       <template v-else>
-        <li><span>filter city</span></li>
-        <li><span>or state</span></li>
+        <li>
+          <span>filter city</span>
+        </li>
+        <li>
+          <span>or state</span>
+        </li>
       </template>
     </ul>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld";
 import axios from "axios";
+import HelloWorld from "./components/HelloWorld";
 // import _ from "lodash";
 
 export default {
